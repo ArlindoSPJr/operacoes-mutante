@@ -73,4 +73,59 @@ describe('Suíte de Testes Fraca para 50 Operações Aritméticas', () => {
   test('48. deve calcular o dobro de um número', () => { expect(dobro(10)).toBe(20); });
   test('49. deve calcular o triplo de um número', () => { expect(triplo(10)).toBe(30); });
   test('50. deve calcular a metade de um número', () => { expect(metade(20)).toBe(10); });
+
+  // === Testes adicionais para matar mutantes sobreviventes ===
+  test('51. deve lançar erro com mensagem específica na divisão por zero', () => {
+    expect(() => divisao(5, 0)).toThrow('Divisão por zero não é permitida.');
+  });
+  test('52. deve lançar erro para raiz quadrada de número negativo', () => {
+    expect(() => raizQuadrada(-1)).toThrow('Não é possível calcular a raiz quadrada de um número negativo.');
+  });
+  test('53. deve calcular a raiz quadrada de zero', () => { expect(raizQuadrada(0)).toBe(0); });
+  test('54. deve lançar erro para fatorial de número negativo', () => {
+    expect(() => fatorial(-1)).toThrow('Fatorial não é definido para números negativos.');
+  });
+  test('55. deve calcular o fatorial de 0 e de 1', () => {
+    expect(fatorial(0)).toBe(1);
+    expect(fatorial(1)).toBe(1);
+  });
+  test('56. deve retornar 0 para a média de um array vazio', () => { expect(mediaArray([])).toBe(0); });
+  test('57. deve lançar erro para máximo de array vazio', () => {
+    expect(() => maximoArray([])).toThrow('Array vazio не possui valor máximo.');
+  });
+  test('58. deve lançar erro para mínimo de array vazio', () => {
+    expect(() => minimoArray([])).toThrow('Array vazio не possui valor mínimo.');
+  });
+  test('59. deve retornar false para um número ímpar em isPar', () => { expect(isPar(7)).toBe(false); });
+  test('60. deve retornar false para um número par em isImpar', () => { expect(isImpar(4)).toBe(false); });
+  test('61. deve retornar false para 0 e 1 em isPrimo', () => {
+    expect(isPrimo(0)).toBe(false);
+    expect(isPrimo(1)).toBe(false);
+  });
+  test('62. deve retornar false para um número composto em isPrimo', () => { expect(isPrimo(9)).toBe(false); });
+  test('63. deve retornar 1 para o produto de um array vazio', () => { expect(produtoArray([])).toBe(1); });
+  test('64. deve limitar valores abaixo do mínimo e acima do máximo (clamp)', () => {
+    expect(clamp(-5, 0, 10)).toBe(0);
+    expect(clamp(15, 0, 10)).toBe(10);
+  });
+  test('65. deve retornar false quando não é divisível', () => { expect(isDivisivel(10, 3)).toBe(false); });
+  test('66. deve converter 100 Celsius para 212 Fahrenheit', () => { expect(celsiusParaFahrenheit(100)).toBe(212); });
+  test('67. deve converter 212 Fahrenheit para 100 Celsius', () => { expect(fahrenheitParaCelsius(212)).toBe(100); });
+  test('68. deve lançar erro ao inverter zero', () => {
+    expect(() => inverso(0)).toThrow('Não é possível inverter o número zero.');
+  });
+  test('69. deve retornar false em isMaiorQue para menor ou igual', () => {
+    expect(isMaiorQue(5, 10)).toBe(false);
+    expect(isMaiorQue(5, 5)).toBe(false);
+  });
+  test('70. deve retornar false em isMenorQue para maior ou igual', () => {
+    expect(isMenorQue(10, 5)).toBe(false);
+    expect(isMenorQue(5, 5)).toBe(false);
+  });
+  test('71. deve retornar false para números diferentes em isEqual', () => { expect(isEqual(7, 8)).toBe(false); });
+  test('72. deve lançar erro para mediana de array vazio', () => {
+    expect(() => medianaArray([])).toThrow('Array vazio не possui mediana.');
+  });
+  test('73. deve calcular a mediana de um array desordenado', () => { expect(medianaArray([3, 1, 2])).toBe(2); });
+  test('74. deve calcular a mediana de um array com tamanho par', () => { expect(medianaArray([4, 1, 3, 2])).toBe(2.5); });
 });
